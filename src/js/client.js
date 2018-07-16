@@ -6,13 +6,17 @@ const state = {
 
 const render = lState => {
   const title = document.createElement('h1');
+  title.className = 'titulo'
   title.innerHTML = 'TOTITO';
 
   const tablero = document.createElement('div');
   tablero.className = 'tablero';
   
+  const turno1 = document.createElement('h2');
+  turno1.innerHTML = "Turno jugador:"
+
   const turno = document.createElement('h2');
-  turno.innerHTML = "Turno jugador: 1"
+  
 
   const jugador = document.createElement('h1')
   jugador.className ="jugador"
@@ -34,21 +38,23 @@ const render = lState => {
         columnas.innerHTML ='<img src = "/assets/m.jpg">'
     
           columnas.onclick = () => {
+            
             state.turno++;
             
-            if(state.turno%2 == 0){
+            if(state.tablero[i][j] == 0){
+              if(state.turno%2 == 0){
+                  
+                  state.tablero[i][j] = 1;
+                  columnas.innerHTML ='<img src = "/assets/O.png">'
+                  turno.innerHTML = '<img src = "/assets/X.png">'
+                  
+              } else{
                 
-                state.tablero[i][j] = 1;
-                columnas.innerHTML ='<img src = "/assets/O.png">'
-                turno.innerHTML = "Turno jugador: 1"
-                
-            } else{
-              
-                state.tablero[i][j] = 2;
-                columnas.innerHTML ='<img src = "/assets/X.png">'
-                turno.innerHTML = "Turno jugador: 2"
+                  state.tablero[i][j] = 2;
+                  columnas.innerHTML ='<img src = "/assets/X.png">'
+                  turno.innerHTML = '<img src = "/assets/O.png">'
+              }
             }
-
               //Comprobar si el jugador ha ganado en filas y columnas
             for(let k=0; k<3; k++ ){
 
@@ -101,16 +107,22 @@ const render = lState => {
             };
 
           reiniciar.onclick = () => {
-                columnas.innerHTML ='<img src ="/assets/m.jpg">'
-                jugador.innerHTML = ""
-                state.tablero = 0;
-
+                jugador.innerHTML = "";
+                root.innerHTML = null;
+                state.tablero = [[0,0,0],[0,0,0],[0,0,0]];
+                state.turno = 0;
+                state.terminado =0;
+                console.log(state.tablero);
+                render(state);
           };
       }
   }
+
   root.appendChild(title);
   root.appendChild(tablero);
   root.appendChild(jugador);
+  root.appendChild(turno1);
   root.appendChild(turno);
+  
 }
 render(state);
