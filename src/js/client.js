@@ -55,6 +55,11 @@ const render = lState => {
                   turno.innerHTML = '<img src = "/assets/O.png">'
               }
             }
+
+            if(state.turno == 9){
+              jugador.innerHTML = "Empatado"
+            }
+
               //Comprobar si el jugador ha ganado en filas y columnas
             for(let k=0; k<3; k++ ){
 
@@ -106,14 +111,15 @@ const render = lState => {
               root.appendChild(reiniciar)
             };
 
+           
           reiniciar.onclick = () => {
-                jugador.innerHTML = "";
-                root.innerHTML = null;
-                state.tablero = [[0,0,0],[0,0,0],[0,0,0]];
-                state.turno = 0;
-                state.terminado =0;
-                console.log(state.tablero);
-                render(state);
+              jugador.innerHTML = "";
+              root.innerHTML = null;
+              state.tablero = [[0,0,0],[0,0,0],[0,0,0]];
+              state.turno = 0;
+              state.terminado =0;
+              console.log(state.tablero);
+              render(state);
           };
       }
   }
@@ -123,6 +129,6 @@ const render = lState => {
   root.appendChild(jugador);
   root.appendChild(turno1);
   root.appendChild(turno);
-  
+
 }
 render(state);
