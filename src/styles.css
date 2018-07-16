@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  padding: 1rem;
+}
+
+.tablero button{
+  background-color: rebeccapurple;
+  height: 8rem;
+  width: 8rem;
+}
+
+.tablero .columnas img{
+  height: 5rem;
+  width: 5rem;
+}
+
+.reiniciar{
+  padding: 2rem;
+  font-size: 1cm;
+  enable-background: 1cm; 
+}
+
+.jugador{
+  font-family: Comfortaa;
+}
